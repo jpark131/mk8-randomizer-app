@@ -18,7 +18,6 @@ function AppButton({title, color, style, textstyle, onPress}) {
 const styles = StyleSheet.create({
     button: {
         borderRadius: 40,
-        marginVertical: 10,
         paddingVertical: 10,
         paddingHorizontal: 15,
         alignItems: "center",

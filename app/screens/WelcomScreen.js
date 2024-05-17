@@ -7,12 +7,11 @@ function WelcomeScreen(props) {
         <SafeAreaView style={styles.container}>
             <Image source={require("../assets/logo-mk8.png")} style={{
                 width: '90%',
-                marginVertical: -30,
                 resizeMode: "contain"              
             }}/>
             <Text>Welcome to the Mario Kart 8 Deluxe Randomizer!!</Text>
-            <AppButton title="Let's a Go!" color="tomato" onPress={() => console.log("tapped")}/>
-            <ImageBackground style={styles.background} source={require("../assets/characters.png")}/>
+            <AppButton title="Let's a Go!" color="tomato" style={{marginTop: '2%'}}onPress={() => console.log("tapped")}/>
+            <Image style={styles.background} source={require("../assets/characters.png")}/>
         </SafeAreaView>
     );
 }
@@ -21,7 +20,8 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         width: '100%',
-        resizeMode: "center"
+        maxWidth: 800,
+        resizeMode: "contain"
     },
     container: {
         flex: 1,
