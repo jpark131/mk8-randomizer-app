@@ -1,20 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
+import WelcomeScreen from "./app/screens/WelcomScreen"
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <WelcomeScreen />
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    alignContent: 'center',
+    justifyContent: 'space-evenly',
   },
 });
