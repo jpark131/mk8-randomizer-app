@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
-import WelcomeScreen from "./app/screens/WelcomScreen"
+import { tracks } from './app/data/tracks';
+import WelcomeScreen from './app/screens/WelcomeScreen';
 
 export default function App() {
   return (
-    <WelcomeScreen />
+    <WelcomeScreen tracks={tracks}/>
   );
 }
 
