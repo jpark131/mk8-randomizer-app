@@ -1,22 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
-import { tracks } from './app/data/tracks';
-import WelcomeScreen from './app/screens/WelcomeScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import StackNavigator from './app/screens/StackNavigator';
 
 export default function App() {
   return (
-    <WelcomeScreen tracks={tracks}/>
+    <NavigationContainer>
+      <StackNavigator />
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    alignContent: 'center',
-    justifyContent: 'space-evenly',
-  },
-});
+

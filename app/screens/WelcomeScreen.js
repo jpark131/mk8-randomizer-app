@@ -4,7 +4,7 @@ import { Image, Text, SafeAreaView, StyleSheet, View, ImageBackground } from 're
 import AppButton from '../components/AppButton';
 import TrackCard from '../components/TrackCard';
 
-function WelcomeScreen({tracks}) {
+function WelcomeScreen({navigation, route}) {
     return (
         <SafeAreaView style={styles.container}>
             <Image source={require("../assets/logo-mk8.png")} style={{
@@ -12,8 +12,8 @@ function WelcomeScreen({tracks}) {
                 resizeMode: "contain"              
             }}/>
             <Text>Welcome to the Mario Kart 8 Deluxe Randomizer!!</Text>
-            <AppButton title="Let's a Go!" color="tomato" style={{marginTop: '2%'}}onPress={() => console.log("tapped")}/>
-            <TrackCard track={tracks[0]} />
+            <AppButton title="Let's a Go!" color="dodgerblue" style={{marginTop: '2%'}}onPress={() => navigation.replace("Example")}/>
+            {/* <TrackCard track={route.params.tracks[0]} /> */}
             <Image style={styles.background} source={require("../assets/characters.png")}/>
         </SafeAreaView>
     );
