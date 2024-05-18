@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import FilterBox from '../components/FilterBox';
 import AppButton from '../components/AppButton';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -18,21 +18,23 @@ function FormScreen({navigation, route}) {
         {label: '48', value: '48'}
     ]);
     return (
-        <View style={styles.container}>
-            <FilterBox/>
-            <DropDownPicker
-                open={open}
-                value={value}
-                items={items}
-                setOpen={setOpen}
-                setValue={setValue}
-                setItems={setItems}
-                placeholder='Number of Races (default 4)'
-            />
-            <AppButton 
-                title="Randomize!" 
-                onPress={() => navigation.navigate("Results", {tracks: route.params.tracks})}/>
-        </View>
+        <ScrollView>
+            <View style={styles.container}>
+                <FilterBox/>
+                <DropDownPicker
+                    open={open}
+                    value={value}
+                    items={items}
+                    setOpen={setOpen}
+                    setValue={setValue}
+                    setItems={setItems}
+                    placeholder='Number of Races (default 4)'
+                />
+                <AppButton 
+                    title="Randomize!" 
+                    onPress={() => navigation.navigate("Results", {tracks: route.params.tracks})}/>
+            </View>
+        </ScrollView>
     );
 }
 

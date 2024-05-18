@@ -98,3 +98,62 @@ export let tracks = [
     new Track("Bowser Castle 3", "Spiny", "SNES", ["Castle"]),
     new Track("Rainbow Road", "Spiny", "Wii", ["Rainbow"])
 ]
+
+export let cups = [
+    'Mushroom',
+    'Flower',
+    'Star',
+    'Special',
+    'Shell',
+    'Banana',
+    'Leaf',
+    'Lightning',
+    'Egg',
+    'Triforce',
+    'Crossing',
+    'Bell',
+    'Golden Dash',
+    'Lucky Cat',
+    'Turnip',
+    'Propeller',
+    'Rock',
+    'Moon',
+    'Fruit',
+    'Boomerang',
+    'Feather',
+    'Cherry',
+    'Acorn',
+    'Spiny',
+]
+
+export let origins = [
+    'MK8',
+    'Tour',
+    '3DS',
+    'Wii',
+    'DS',
+    'GCN',
+    'GBA',
+    'N64',
+    'SNES',
+]
+
+export let types = [
+    'Candy',
+    'Castle',
+    'Circuit',
+    'City',
+    'Cloud',
+    'Desert',
+    'Future',
+    'Ice',
+    'IRL City',
+    'Jungle',
+    'Mini',
+    'Other',
+    'Plains',
+    'Rainbow',
+    'Road',
+    'Ruins',
+    'Water',
+]
