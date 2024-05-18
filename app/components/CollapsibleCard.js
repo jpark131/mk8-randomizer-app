@@ -51,17 +51,6 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderRadius: 5,
     },
-    filterContentSection: {
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-evenly',
-    },
-    filterContentTitle: {
-        padding: 10,
-        fontWeight: 'bold',
-        fontSize: 16,
-    },
     title: {
         fontSize: 20,
         fontWeight: 'bold',
