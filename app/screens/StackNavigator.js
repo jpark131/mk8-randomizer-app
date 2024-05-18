@@ -24,6 +24,7 @@ function StackNavigator(props) {
             <Stack.Screen
                 name="Results"
                 component={ResultsScreen}
+                options={{ headerBackTitle: 'Back' }}
             />
       </Stack.Navigator>
     );
