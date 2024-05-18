@@ -3,6 +3,8 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import TrackCard from '../components/TrackCard';
 
 function ResultsScreen({navigation, route}) {
+    randomize(route.params.tracks)
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -13,6 +15,18 @@ function ResultsScreen({navigation, route}) {
             </View>
         </ScrollView>
     );
+}
+
+function randomize(tracks) {
+    let currentIndex = tracks.length;
+
+    while (currentIndex != 0) {
+        let randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [tracks[currentIndex], tracks[randomIndex]] = [
+            tracks[randomIndex], tracks[currentIndex]];
+    }
 }
 
 
