@@ -1,82 +1,38 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, LayoutChangeEvent, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import FilterContent from './FilterContent';
-import { cups, origins, types } from '../data/tracks';
+import CollapsibleCard from './CollapsibleCard';
 
-function FilterBox(props) {
-    const [expanded, setExpanded] = useState(false);
-    const [height, setHeight] = useState(0);
-
-    const onItemPress = () => {
-        setExpanded(!expanded);
+function FilterBox({ 
+        onCupFilterChange, 
+        cupFilters,
+        onOriginFilterChange,
+        originFilters,
+        onTypeFilterChange,
+        typeFilters
+}) {
+    const handleCupFilterChange = (checked, id) => {
+        onCupFilterChange(checked, id);
     }
 
-    const animatedStyle = useAnimatedStyle(() => {
-        const animatedHeight = expanded ? withTiming(height) : withTiming(0);
-        return {
-            height: animatedHeight,
-            overflow: 'hidden',
-            width: '100%',
-        }
-    })
+    const handleOriginFilterChange = (checked, id) => {
+        onOriginFilterChange(checked, id);
+    }
 
-    const onLayout = (event: LayoutChangeEvent) => {
-        const layoutHeight = event.nativeEvent.layout.height;
-        if (layoutHeight > 0 && layoutHeight !== height) {
-            setHeight(layoutHeight)
-        }
-    };
+    const handleTypeFilterChange = (checked, id) => {
+        onTypeFilterChange(checked, id);
+    }
+
 
     return (
-        <Pressable onPress={onItemPress} style={styles.container}>
-            <View style={styles.container}>
-                <View style={styles.titleBackground}>
-                    <Text style={styles.title}>Filters</Text>
-                </View>
-                <Animated.View style={animatedStyle}>
-                    <View onLayout={onLayout} style={{position: "absolute"}}>
-                        <FilterContent title="Cup" filters={cups}/>
-                        <FilterContent title="Game of Origin" filters={origins}/>
-                        <FilterContent title="Track Type" filters={types}/>
-                    </View>
-                </Animated.View>
-            </View>
-        </Pressable>
+        <CollapsibleCard title="Filters">
+            <FilterContent title="Cup" filters={cupFilters} onFilterChange={handleCupFilterChange}/>
+            <FilterContent title="Game of Origin" filters={originFilters} onFilterChange={handleOriginFilterChange}/>
+            <FilterContent title="Track Type" filters={typeFilters} onFilterChange={handleTypeFilterChange}/>
+        </CollapsibleCard>
+            
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        borderWidth: 0.5,
-        borderColor: 'gray',
-        borderRadius: 5,
-    },
-    filterContentSection: {
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'space-evenly',
-    },
-    filterContentTitle: {
-        padding: 10,
-        fontWeight: 'bold',
-        fontSize: 16,
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-    },
-    titleBackground: {
-        width: '100%',
-        backgroundColor: 'lightgray',
-        padding: 10,
-        borderBottomWidth: 0.5,
-        borderBottomColor: 'gray'
-    }
-});
 
 export default FilterBox;

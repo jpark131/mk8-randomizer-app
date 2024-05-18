@@ -1,37 +1,17 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
 import FilterCheckBox from './FilterCheckBox';
 
-function FilterContent({ title, filters }) {
-    const checkBoxData = [];
-    let i = 0;
-    for (let filter of filters) {
-        checkBoxData.push(
-            {
-                id: i,
-                name: filter,
-                isChecked: false,
-            }
-        )
-        i++;
-    };
-    
-    const [checkBoxes, setCheckBoxes] = useState(checkBoxData);
-
+function FilterContent({ title, filters, onFilterChange }) {
     const handleCheckboxPress = (checked, id) => {
-        setCheckBoxes(
-            checkBoxes.map(item =>
-                item.id === id ? {...item, isChecked: checked} : item,
-            ),
-        );
+        onFilterChange(checked, id);
     };
     
     return (
         <View>
             <Text style={styles.filterContentTitle}>{title}:</Text>  
             <View style={styles.filterContentSection}>
-                {checkBoxes.map(filter => (
+                {filters.map(filter => (
                     <View key={filter.id} style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                         <FilterCheckBox
                             id={filter.id}
