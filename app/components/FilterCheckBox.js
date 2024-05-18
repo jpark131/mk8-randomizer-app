@@ -1,7 +1,7 @@
 import React from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
-function FilterCheckBox({id, text, isChecked, onCheckboxPress}) {
+function FilterCheckBox({id, text, checkBoxWidth, minCheckBoxWidth, isChecked, onCheckboxPress}) {
     
     const handleCheckboxPress = () => {
         onCheckboxPress(!isChecked, id);
@@ -13,8 +13,8 @@ function FilterCheckBox({id, text, isChecked, onCheckboxPress}) {
             isChecked={isChecked}
             onPress={handleCheckboxPress}
 
-            style={{padding: 5, width: 150}}
-            textStyle={{textDecorationLine: "none"}} 
+            style={{padding: 5, width: checkBoxWidth, minWidth: minCheckBoxWidth}}
+            textStyle={{textDecorationLine: "none"}}
             iconStyle={{borderRadius: 0}} 
             innerIconStyle={{borderRadius: 0}}
             fillColor="dodgerblue"

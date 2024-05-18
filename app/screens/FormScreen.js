@@ -4,6 +4,8 @@ import FilterBox from '../components/FilterBox';
 import AppButton from '../components/AppButton';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { cups, origins, types } from '../data/tracks';
+import OptionsBox from '../components/OptionsBox';
+import Card from '../components/Card';
 
 function FormScreen({navigation, route}) {
     //filter states
@@ -13,20 +15,14 @@ function FormScreen({navigation, route}) {
     const [originFilters, setOriginFilters] = useState(originFilterData)
     let typeFilterData = initFilterData(types)
     const [typeFilters, setTypeFilters] = useState(typeFilterData)
+
+    //mode states
+    const [cupFilterMode, setCupFilterMode] = useState("Select and Unselect");
+    const [originFilterMode, setOriginFilterMode] = useState("Select and Unselect");
+    const [typeFilterMode, setTypeFilterMode] = useState("Select and Unselect");
     
     //number of races states
-    const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(4);
-    const [items, setItems] = useState([
-        {label: '4', value: '4'},
-        {label: '6', value: '6'},
-        {label: '8', value: '8'},
-        {label: '12', value: '12'},
-        {label: '16', value: '16'},
-        {label: '24', value: '24'},
-        {label: '32', value: '32'},
-        {label: '48', value: '48'}
-    ]);
+    const [numRaces, setNumRaces] = useState(4);
 
     const handleCupFilterChange = (checked, id) => {
         setCupFilters(
@@ -52,6 +48,18 @@ function FormScreen({navigation, route}) {
         );
     };
 
+    const handleCupFilterModeChange = (selectedItem) => {
+        setCupFilterMode(selectedItem);
+    };
+
+    const handleOriginFilterModeChange = (selectedItem) => {
+        setOriginFilterMode(selectedItem);
+    };
+
+    const handleTypeFilterModeChange = (selectedItem) => {
+        setTypeFilterMode(selectedItem);
+    };
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -60,31 +68,32 @@ function FormScreen({navigation, route}) {
                     contentTitle="Cup"
                     onFilterChange={handleCupFilterChange}
                     filters={cupFilters}
+                    onModeChange={handleCupFilterModeChange}
                 />
                 <FilterBox
                     title="Origin Filters"
                     contentTitle="Origin"
                     onFilterChange={handleOriginFilterChange}
                     filters={originFilters}
+                    onModeChange={handleOriginFilterModeChange}
                 />
                 <FilterBox
                     title="Type Filters"
                     contentTitle="Type"
                     onFilterChange={handleTypeFilterChange}
                     filters={typeFilters}
+                    onModeChange={handleTypeFilterModeChange}
                 />
-                <DropDownPicker
-                    open={open}
-                    value={value}
-                    items={items}
-                    setOpen={setOpen}
-                    setValue={setValue}
-                    setItems={setItems}
-                    placeholder='Number of Races (default 4)'
+                <OptionsBox 
+                    numRaces={numRaces}
+                    onNumRacesChange={setNumRaces}
                 />
-                <AppButton 
-                    title="Randomize!" 
-                    onPress={() => navigation.navigate("Results", {tracks: route.params.tracks})}/>
+                <Card title="Randomize!">
+                    <AppButton 
+                        title="Submit" 
+                        onPress={() => navigation.navigate("Results", {tracks: route.params.tracks})}
+                    />
+                </Card>
             </View>
         </ScrollView>
     );
@@ -118,7 +127,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
         width: '100%',
-        maxWidth: 800,
+        maxWidth: 1000,
         alignSelf: 'center',
     }
 });

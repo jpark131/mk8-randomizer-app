@@ -5,25 +5,22 @@ import CollapsibleCard from './CollapsibleCard';
 function FilterBox({ 
         title,
         contentTitle,
-        onFilterChange, 
+        onFilterChange,
         filters,
+        onModeChange,
 }) {
     const handleFilterChange = (checked, id) => {
         onFilterChange(checked, id);
-    }
+    };
 
-    const handleOriginFilterChange = (checked, id) => {
-        onOriginFilterChange(checked, id);
-    }
-
-    const handleTypeFilterChange = (checked, id) => {
-        onTypeFilterChange(checked, id);
-    }
+    const handleModeChange = (selectedItem) => {
+        onModeChange(selectedItem);
+    };
 
 
     return (
         <CollapsibleCard title={title}>
-            <FilterContent title={contentTitle} filters={filters} onFilterChange={handleFilterChange}/>
+            <FilterContent title={contentTitle} filters={filters} onFilterChange={handleFilterChange} onModeChange={handleModeChange}/>
         </CollapsibleCard>  
     );
 }
