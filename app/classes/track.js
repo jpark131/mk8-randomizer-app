@@ -16,7 +16,7 @@ export class Track {
         let splitname = cleaned.split(' ');
         let tokens = splitname.concat([this.origin])
         let lowered = [];
-        for (x of tokens) {
+        for (let x of tokens) {
             lowered.push(x.toLowerCase());
         }
         return lowered.join('_')
@@ -25,7 +25,7 @@ export class Track {
     _get_cupimage_name() {    
         let splitcup = this.cup.split(' ');
         let lowered = [];
-        for (x of splitcup){
+        for (let x of splitcup){
             lowered.push(x.toLowerCase());
         }
         return lowered.join('_');

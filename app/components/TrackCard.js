@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         overflow: "hidden",
         padding: 10,
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',        
     },
     image: {
 

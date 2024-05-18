@@ -3,19 +3,10 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import { tracks } from '../data/tracks';
-import AppButton from '../components/AppButton';
 import WelcomeScreen from '../screens/WelcomeScreen';
+import ResultsScreen from './ResultsScreen';
 
 const Stack = createNativeStackNavigator();
-
-const Example = ({navigation}) => (
-    <View style={styles.container}>
-      <Text>Hello</Text>
-      <AppButton title="Let's a Go Back!" color="dodgerblue" style={{marginTop: '2%'}}onPress={() => navigation.replace("Welcome")}/>
-      <Image style={styles.background} source={require("../assets/characters.png")}/>
-    </View>
-  )
-  
 
 function StackNavigator(props) {
     return (
@@ -26,8 +17,8 @@ function StackNavigator(props) {
             initialParams={{tracks: tracks}}
             />
             <Stack.Screen
-            name="Example"
-            component={Example}
+            name="Results"
+            component={ResultsScreen}
             />
       </Stack.Navigator>
     );
@@ -46,6 +37,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       alignContent: 'center',
     },
-  });
+});
 
 export default StackNavigator;
