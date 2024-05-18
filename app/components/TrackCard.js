@@ -13,8 +13,8 @@ function TrackCard({ track }) {
             <Text style={styles.cup}>{track.cup}</Text>
             <Text style={styles.type}>{track.typeString}</Text>
             <View style={styles.buttons}>
-                <AppButton title="Reshuffle" color="dodgerblue"/>
-                <AppButton title="Remove" color="dodgerblue"/>
+                <AppButton title="Reshuffle"/>
+                <AppButton title="Remove" />
             </View>
         </View>
     );

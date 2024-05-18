@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { tracks } from '../data/tracks';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import ResultsScreen from './ResultsScreen';
+import FormScreen from './FormScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,13 +13,17 @@ function StackNavigator(props) {
     return (
         <Stack.Navigator>
             <Stack.Screen
-            name="Welcome"
-            component={WelcomeScreen}
-            initialParams={{tracks: tracks}}
+                name="Welcome"
+                component={WelcomeScreen}
+                initialParams={{tracks: tracks}}
             />
             <Stack.Screen
-            name="Results"
-            component={ResultsScreen}
+                name="Mario Kart 8 Track Chooser"
+                component={FormScreen}
+            />
+            <Stack.Screen
+                name="Results"
+                component={ResultsScreen}
             />
       </Stack.Navigator>
     );

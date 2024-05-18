@@ -8,14 +8,13 @@ function WelcomeScreen({navigation, route}) {
         <SafeAreaView style={styles.container}>
             <Image source={require("../assets/logo-mk8.png")} style={{
                 width: '90%',
-                resizeMode: "contain"              
+                resizeMode: "contain",
+                marginBottom: -20,          
             }}/>
             <Text>Welcome to the Mario Kart 8 Deluxe Randomizer!!</Text>
             <AppButton 
                 title="Let's a Go!" 
-                color="dodgerblue" 
-                style={{marginTop: '2%'}} 
-                onPress={() => navigation.replace("Results", {tracks: route.params.tracks})}
+                onPress={() => navigation.replace("Mario Kart 8 Track Chooser", {tracks: route.params.tracks})}
             />
             <Image style={styles.background} source={require("../assets/characters.png")}/>
         </SafeAreaView>
@@ -33,6 +32,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     }
-})
+});
 
 export default WelcomeScreen
