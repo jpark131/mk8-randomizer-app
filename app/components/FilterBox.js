@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
-import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import React from 'react';
 import FilterContent from './FilterContent';
 import CollapsibleCard from './CollapsibleCard';
 
@@ -30,8 +28,7 @@ function FilterBox({
             <FilterContent title="Cup" filters={cupFilters} onFilterChange={handleCupFilterChange}/>
             <FilterContent title="Game of Origin" filters={originFilters} onFilterChange={handleOriginFilterChange}/>
             <FilterContent title="Track Type" filters={typeFilters} onFilterChange={handleTypeFilterChange}/>
-        </CollapsibleCard>
-            
+        </CollapsibleCard>  
     );
 }
 
