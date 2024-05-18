@@ -3,15 +3,13 @@ import FilterContent from './FilterContent';
 import CollapsibleCard from './CollapsibleCard';
 
 function FilterBox({ 
-        onCupFilterChange, 
-        cupFilters,
-        onOriginFilterChange,
-        originFilters,
-        onTypeFilterChange,
-        typeFilters
+        title,
+        contentTitle,
+        onFilterChange, 
+        filters,
 }) {
-    const handleCupFilterChange = (checked, id) => {
-        onCupFilterChange(checked, id);
+    const handleFilterChange = (checked, id) => {
+        onFilterChange(checked, id);
     }
 
     const handleOriginFilterChange = (checked, id) => {
@@ -24,10 +22,8 @@ function FilterBox({
 
 
     return (
-        <CollapsibleCard title="Filters">
-            <FilterContent title="Cup" filters={cupFilters} onFilterChange={handleCupFilterChange}/>
-            <FilterContent title="Game of Origin" filters={originFilters} onFilterChange={handleOriginFilterChange}/>
-            <FilterContent title="Track Type" filters={typeFilters} onFilterChange={handleTypeFilterChange}/>
+        <CollapsibleCard title={title}>
+            <FilterContent title={contentTitle} filters={filters} onFilterChange={handleFilterChange}/>
         </CollapsibleCard>  
     );
 }

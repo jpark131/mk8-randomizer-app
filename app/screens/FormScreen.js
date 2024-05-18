@@ -55,13 +55,23 @@ function FormScreen({navigation, route}) {
     return (
         <ScrollView>
             <View style={styles.container}>
-                <FilterBox 
-                    onCupFilterChange={handleCupFilterChange}
-                    cupFilters={cupFilters}
-                    onOriginFilterChange={handleOriginFilterChange}
-                    originFilters={originFilters}
-                    onTypeFilterChange={handleTypeFilterChange}
-                    typeFilters={typeFilters}
+                <FilterBox
+                    title="Cup Filters"
+                    contentTitle="Cup"
+                    onFilterChange={handleCupFilterChange}
+                    filters={cupFilters}
+                />
+                <FilterBox
+                    title="Origin Filters"
+                    contentTitle="Origin"
+                    onFilterChange={handleOriginFilterChange}
+                    filters={originFilters}
+                />
+                <FilterBox
+                    title="Type Filters"
+                    contentTitle="Type"
+                    onFilterChange={handleTypeFilterChange}
+                    filters={typeFilters}
                 />
                 <DropDownPicker
                     open={open}
