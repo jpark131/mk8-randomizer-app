@@ -5,18 +5,23 @@ import { Row, Table } from 'react-native-reanimated-table';
 import { images } from '../data/images';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
-function TrackTable({tracks}) {
-    const trackCheck = (checked) => (
-        <View style={{justifyContent: 'center', alignItems: 'center'}}>
-            <BouncyCheckbox
-                disableText
-                isChecked={checked}
-                iconStyle={{borderRadius: 0}} 
-                innerIconStyle={{borderRadius: 0}}
-                fillColor="dodgerblue"
-            />
-        </View>
-    );
+function TrackTable({tracks, onTrackCheck}) {
+    const trackCheck = (track) => {
+
+        return (
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <BouncyCheckbox
+                    isChecked={track.checked}
+                    onPress={() => onTrackCheck(track)}
+
+                    disableText
+                    iconStyle={{borderRadius: 0}} 
+                    innerIconStyle={{borderRadius: 0}}
+                    fillColor="dodgerblue"
+                />
+            </View>
+        );
+    };
 
     const trackImage = (image) => (
             <View style={{justifyContent: 'center', alignItems: 'center', padding: 5}}>
@@ -31,7 +36,7 @@ function TrackTable({tracks}) {
                     <Table borderStyle={{ borderWidth: 0.5, borderColor: 'gray'}}>
                         <Row data={['','','Name', 'Cup', 'Origin', 'Track Type']} widthArr={[35, 227, 180, 120, 100, 275]} style={styles.head} textStyle={styles.headText}/>
                         {tracks.map(track => (
-                            <Row key={track.name.concat(track.origin)} data={[trackCheck(track.checked), trackImage(track.image),track.name, track.cup, track.origin, track.typeString]} widthArr={[35, 227, 180, 120, 100, 275]} textStyle={styles.text}/>
+                            <Row key={track.name.concat(track.origin)} data={[trackCheck(track), trackImage(track.image),track.name, track.cup, track.origin, track.typeString]} widthArr={[35, 227, 180, 120, 100, 275]} textStyle={styles.text}/>
                         ))}
                     </Table>
                 </View>

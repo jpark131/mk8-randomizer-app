@@ -119,7 +119,16 @@ function FormScreen({navigation, route}) {
         }
         setTrackSelections(tempTracks);
     };
-    
+
+    const handleTrackCheck = (track) => {
+        console.log(track);
+        let newSelections = trackSelections.map((oldTrack) => 
+            (oldTrack.name === track.name) && (oldTrack.cup === track.cup) ? {...oldTrack, checked: !track.checked} : oldTrack,
+        )
+        console.log(newSelections);
+        setTrackSelections(newSelections);
+    };
+
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -157,7 +166,7 @@ function FormScreen({navigation, route}) {
                         onPress={() => navigation.navigate("Results", {tracks: trackSelections.filter(track => track.checked)})}
                         />
                 </Card>
-                <TrackTable tracks={trackSelections}/>
+                <TrackTable tracks={trackSelections} onTrackCheck={handleTrackCheck}/>
             </View>
         </ScrollView>
     );
