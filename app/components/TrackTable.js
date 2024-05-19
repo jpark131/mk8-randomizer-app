@@ -35,7 +35,7 @@ function TrackTable({tracks, onTrackCheck}) {
                 <View style={{width: '100%', minWidth: 550}}>
                     <Table borderStyle={{ borderWidth: 0.5, borderColor: 'gray'}}>
                         <Row data={['','','Name', 'Cup', 'Origin', 'Track Type']} widthArr={[35, 227, 180, 120, 100, 275]} style={styles.head} textStyle={styles.headText}/>
-                        {tracks.map(track => (
+                        {tracks.filter(track => (!track.hidden)).map(track => (
                             <Row key={track.name.concat(track.origin)} data={[trackCheck(track), trackImage(track.image),track.name, track.cup, track.origin, track.typeString]} widthArr={[35, 227, 180, 120, 100, 275]} textStyle={styles.text}/>
                         ))}
                     </Table>
