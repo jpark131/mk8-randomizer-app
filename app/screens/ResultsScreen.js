@@ -1,32 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import TrackCard from '../components/TrackCard';
 
 function ResultsScreen({navigation, route}) {
-    randomize(route.params.tracks)
+    const [trackList, setTracklist] = useState(randomize(route.params.tracks));
+
+    const handleReshuffle = (id) => {
+        if (id === -1) {
+            setTracklist(randomize(trackList));
+        }
+        else {
+            temp = trackList[id];
+            trackList[id] = trackList[4];
+            trackList[4] = temp;
+            
+            goodTracks = trackList.slice(0, 4);
+            otherTracks = trackList.slice(4);
+
+            setTracklist(goodTracks.concat(randomize(otherTracks)));
+        }
+    };
+
+    const handleRemove = (id) => {
+        console.log(`Remove ${id}`)
+    };
 
     return (
         <ScrollView>
             <View style={styles.container}>
-                <TrackCard track={route.params.tracks[0]} />
-                <TrackCard track={route.params.tracks[1]} />
-                <TrackCard track={route.params.tracks[2]} />
-                <TrackCard track={route.params.tracks[3]} />
+                <TrackCard track={trackList[0]} onReshuffle={() => handleReshuffle(0)} onRemove={() => handleRemove(0)}/>
+                <TrackCard track={trackList[1]} onReshuffle={() => handleReshuffle(1)} onRemove={() => handleRemove(1)}/>
+                <TrackCard track={trackList[2]} onReshuffle={() => handleReshuffle(2)} onRemove={() => handleRemove(2)}/>
+                <TrackCard track={trackList[3]} onReshuffle={() => handleReshuffle(3)} onRemove={() => handleRemove(3)}/>
             </View>
         </ScrollView>
     );
 }
 
 function randomize(tracks) {
-    let currentIndex = tracks.length;
+    let randomized = [...tracks];
+    let currentIndex = randomized.length;
 
     while (currentIndex != 0) {
         let randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
 
-        [tracks[currentIndex], tracks[randomIndex]] = [
-            tracks[randomIndex], tracks[currentIndex]];
+        [randomized[currentIndex], randomized[randomIndex]] = [
+            randomized[randomIndex], randomized[currentIndex]];
     }
+    return randomized;
 }
 
 

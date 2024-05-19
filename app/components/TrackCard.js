@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, Image } from 'react-native';
 import {images} from '../data/images'
 import AppButton from './AppButton';
 
-function TrackCard({ track }) {
+function TrackCard({ track, onReshuffle, onRemove }) {
     return (
         <View style={styles.card}>
             <Image style={styles.image} source={images[track.image].uri} />
@@ -13,8 +13,8 @@ function TrackCard({ track }) {
             <Text style={styles.cup}>{track.cup}</Text>
             <Text style={styles.type}>{track.typeString}</Text>
             <View style={styles.buttons}>
-                <AppButton title="Reshuffle"/>
-                <AppButton title="Remove" />
+                <AppButton title="Reshuffle" onPress={() => onReshuffle()}/>
+                <AppButton title="Remove" onPress={() => onRemove()}/>
             </View>
         </View>
     );
