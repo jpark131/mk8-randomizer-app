@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CollapsibleCard from './CollapsibleCard';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { StyleSheet, Text, View } from 'react-native';
 import Card from './Card';
@@ -26,17 +25,32 @@ function OptionsBox({
 
     return (
         <Card title="Options">
+            <Text style={styles.optionTitle}>Number of Races:</Text> 
             <DropDownPicker
+                containerProps={{
+                    style: {
+                        height: open === true ? 250 : null,
+                        backgroundColor: '#fff',
+                    },
+                }}
+                
                 open={open}
                 value={numRaces}
                 items={items}
                 setOpen={setOpen}
                 setValue={handleSetNumRaces}
                 setItems={setItems}
-                placeholder='Number of Races (default 4)'
+                placeholder={numRaces}
             />
         </Card>
     );
 }
+
+const styles = StyleSheet.create({
+    optionTitle: {
+        padding: 10,
+        fontSize: 16,
+    },
+});
 
 export default OptionsBox;
