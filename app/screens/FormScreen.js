@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+
+import { tracks, cups, origins, types } from '../data/tracks';
 import FilterBox from '../components/FilterBox';
 import AppButton from '../components/AppButton';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { cups, origins, types } from '../data/tracks';
 import OptionsBox from '../components/OptionsBox';
 import Card from '../components/Card';
+import TrackTable from '../components/TrackTable';
 
 function FormScreen({navigation, route}) {
     //filter states
@@ -23,6 +24,9 @@ function FormScreen({navigation, route}) {
     
     //number of races states
     const [numRaces, setNumRaces] = useState(4);
+
+    //tracks states
+    const [trackSelections, setTrackSelections] = useState(tracks);
 
     const handleCupFilterChange = (checked, id) => {
         setCupFilters(
@@ -60,6 +64,63 @@ function FormScreen({navigation, route}) {
         setTypeFilterMode(selectedItem);
     };
 
+    const applyFilters = (filterType) => {
+        switch(filterType){
+            case "cup":
+                filters = cupFilters;
+                filterMode = cupFilterMode;
+                break;
+            case "origin":
+                filters = originFilters;
+                filterMode = originFilterMode;
+                break;
+            case "typeString":
+                filters = typeFilters;
+                filterMode = typeFilterMode;
+                break;
+        }
+    
+        let tempTracks = [];
+        for (track of trackSelections) {
+            for (filterObj of filters.filter((filter) => filter.isChecked)) {
+                let filter = filterObj.name;
+                console.log(filter, filterType, track[filterType])
+                if (track[filterType].includes(filter)) {
+                    switch(filterMode) {
+                        case "Select and Unselect": case "Select Only":
+                            track.hidden = false;
+                            track.checked = true;
+                            break;
+                        case "Unselect Only":
+                            track.checked = false;
+                            break;
+                        case "Hide":
+                            track.checked = false;
+                            track.hidden = true;
+                            break;
+                        case "Show":
+                            track.hidden = false;
+                            break;
+                    }
+                }
+                else {
+                    switch(filterMode) {
+                        case "Select and Unselect":
+                            track.checked = false;
+                            break;
+                        case "Hide Others":
+                            track.checked = false;
+                            track.hidden = true;
+                            break;
+                    }   
+                }
+            }
+            tempTracks.push(track);
+        }
+        setTrackSelections(tempTracks);
+    };
+    
+    console.log(trackSelections)
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -69,31 +130,35 @@ function FormScreen({navigation, route}) {
                     onFilterChange={handleCupFilterChange}
                     filters={cupFilters}
                     onModeChange={handleCupFilterModeChange}
-                />
+                    onApplyFilter={() => applyFilters("cup")}
+                    />
                 <FilterBox
                     title="Origin Filters"
                     contentTitle="Origin"
                     onFilterChange={handleOriginFilterChange}
                     filters={originFilters}
                     onModeChange={handleOriginFilterModeChange}
-                />
+                    onApplyFilter={() => applyFilters("origin")}
+                    />
                 <FilterBox
                     title="Type Filters"
                     contentTitle="Type"
                     onFilterChange={handleTypeFilterChange}
                     filters={typeFilters}
                     onModeChange={handleTypeFilterModeChange}
-                />
+                    onApplyFilter={() => applyFilters("typeString")}
+                    />
                 <OptionsBox 
                     numRaces={numRaces}
                     onNumRacesChange={setNumRaces}
-                />
+                    />
                 <Card title="Randomize!">
                     <AppButton 
                         title="Submit" 
-                        onPress={() => navigation.navigate("Results", {tracks: route.params.tracks})}
-                    />
+                        onPress={() => navigation.navigate("Results", {tracks: tracks})}
+                        />
                 </Card>
+                <TrackTable tracks={trackSelections}/>
             </View>
         </ScrollView>
     );

@@ -23,13 +23,16 @@
       "package": "com.radeation.mk8randomizer"
     },
     "web": {
-      "favicon": "./app/assets/favicon.png"
+      "favicon": "./app/assets/favicon.png",
+      "bundler": "metro"
     },
     "extra": {
       "eas": {
         "projectId": "0599ec01-7b36-483f-ab30-7ab5d330979e"
       }
     },
-    "owner": "radeation"
-  }
+    "owner": "radeation",
+    "sdkVersion": "51.0.0"
+  },
+  "name": "mk8-randomizer"
 }

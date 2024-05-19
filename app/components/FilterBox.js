@@ -8,6 +8,7 @@ function FilterBox({
         onFilterChange,
         filters,
         onModeChange,
+        onApplyFilter
 }) {
     const handleFilterChange = (checked, id) => {
         onFilterChange(checked, id);
@@ -17,10 +18,13 @@ function FilterBox({
         onModeChange(selectedItem);
     };
 
+    const handleApplyFilter = () => {
+        onApplyFilter();
+    };
 
     return (
         <CollapsibleCard title={title}>
-            <FilterContent title={contentTitle} filters={filters} onFilterChange={handleFilterChange} onModeChange={handleModeChange}/>
+            <FilterContent title={contentTitle} filters={filters} onFilterChange={handleFilterChange} onModeChange={handleModeChange} onApplyFilter={handleApplyFilter}/>
         </CollapsibleCard>  
     );
 }

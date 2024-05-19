@@ -2,14 +2,19 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FilterCheckBox from './FilterCheckBox';
 import FilterModeGroup from './FilterModeGroup';
+import AppButton from './AppButton';
 
-function FilterContent({ title, filters, onFilterChange, onModeChange }) {
+function FilterContent({ title, filters, onFilterChange, onModeChange, onApplyFilter }) {
     const handleCheckboxPress = (checked, id) => {
         onFilterChange(checked, id);
     };
 
     const handleModeChange = (selectedItem) => {
         onModeChange(selectedItem);
+    };
+
+    const handleApplyFilter = () => {
+        onApplyFilter();
     };
     
     return (
@@ -33,6 +38,7 @@ function FilterContent({ title, filters, onFilterChange, onModeChange }) {
                         />
                     </View>
                 ))}
+                <AppButton title="Apply" onPress={handleApplyFilter}/>
             </View>
         </View>
     );

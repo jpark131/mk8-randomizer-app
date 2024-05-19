@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 function Card({ 
         title,
         contentTitle,
+        contentStyle,
         children
 }) {
     return (
@@ -11,7 +12,7 @@ function Card({
             <View style={styles.titleBackground}>
                 <Text style={styles.title}>{title}</Text>
             </View>
-            <View style={{padding: 10}}>
+            <View style={[{padding: 10}, contentStyle]}>
                 {children}
             </View>
         </View>
