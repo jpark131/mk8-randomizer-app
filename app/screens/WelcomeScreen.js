@@ -14,7 +14,7 @@ function WelcomeScreen({navigation, route}) {
             <Text>Welcome to the Mario Kart 8 Deluxe Randomizer!!</Text>
             <AppButton 
                 title="Let's a Go!" 
-                onPress={() => navigation.replace("Mario Kart 8 Track Chooser", {tracks: route.params.tracks})}
+                onPress={() => navigation.replace("Mario Kart 8 Track Chooser")}
             />
             <Image style={styles.background} source={require("../assets/characters.png")}/>
         </SafeAreaView>

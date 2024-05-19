@@ -2,7 +2,6 @@ import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import { tracks } from '../data/tracks';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import ResultsScreen from './ResultsScreen';
 import FormScreen from './FormScreen';
@@ -15,7 +14,6 @@ function StackNavigator(props) {
             <Stack.Screen
                 name="Welcome"
                 component={WelcomeScreen}
-                initialParams={{tracks: tracks}}
             />
             <Stack.Screen
                 name="Mario Kart 8 Track Chooser"
