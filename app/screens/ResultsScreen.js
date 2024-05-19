@@ -4,6 +4,22 @@ import TrackCard from '../components/TrackCard';
 
 function ResultsScreen({navigation, route}) {
     const [trackList, setTracklist] = useState(randomize(route.params.tracks));
+    const [numRaces, setNumRaces] = useState(route.params.numRaces);
+
+    const renderTrackCards = () => {
+        trackCards = [];
+        for (let i = 0; i < numRaces; i++) {
+            trackCards.push(
+                <TrackCard 
+                    key={i}
+                    track={trackList[i]} 
+                    onReshuffle={() => handleReshuffle(i)} 
+                    onRemove={() => handleRemove(i)}
+                />
+            )
+        }
+        return trackCards;
+    };
 
     const handleReshuffle = (id) => {
         if (id === -1) {
@@ -12,26 +28,24 @@ function ResultsScreen({navigation, route}) {
         else {
             temp = trackList[id];
             trackList[id] = trackList[4];
-            trackList[4] = temp;
+            trackList[numRaces] = temp;
             
-            goodTracks = trackList.slice(0, 4);
-            otherTracks = trackList.slice(4);
+            goodTracks = trackList.slice(0, numRaces);
+            otherTracks = trackList.slice(numRaces);
 
             setTracklist(goodTracks.concat(randomize(otherTracks)));
         }
     };
 
     const handleRemove = (id) => {
-        console.log(`Remove ${id}`)
+        let newList = trackList.slice(0,id).concat(trackList.slice(id+1));
+        setTracklist(newList);
     };
 
     return (
         <ScrollView>
             <View style={styles.container}>
-                <TrackCard track={trackList[0]} onReshuffle={() => handleReshuffle(0)} onRemove={() => handleRemove(0)}/>
-                <TrackCard track={trackList[1]} onReshuffle={() => handleReshuffle(1)} onRemove={() => handleRemove(1)}/>
-                <TrackCard track={trackList[2]} onReshuffle={() => handleReshuffle(2)} onRemove={() => handleRemove(2)}/>
-                <TrackCard track={trackList[3]} onReshuffle={() => handleReshuffle(3)} onRemove={() => handleRemove(3)}/>
+                {renderTrackCards()}
             </View>
         </ScrollView>
     );

@@ -160,7 +160,10 @@ function FormScreen({navigation, route}) {
                 <Card title="Randomize!">
                     <AppButton 
                         title="Submit" 
-                        onPress={() => navigation.navigate("Results", {tracks: trackSelections.filter(track => track.checked)})}
+                        onPress={() => navigation.navigate("Results", {
+                            tracks: trackSelections.filter(track => track.checked),
+                            numRaces: numRaces
+                        })}
                         />
                 </Card>
                 <TrackTable tracks={trackSelections} onTrackCheck={handleTrackCheck}/>

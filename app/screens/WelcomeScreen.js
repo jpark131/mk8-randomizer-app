@@ -8,6 +8,7 @@ function WelcomeScreen({navigation, route}) {
         <SafeAreaView style={styles.container}>
             <Image source={require("../assets/logo-mk8.png")} style={{
                 width: '90%',
+                maxWidth: 800,
                 resizeMode: "contain",
                 marginBottom: -20,          
             }}/>
