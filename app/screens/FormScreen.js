@@ -84,7 +84,6 @@ function FormScreen({navigation, route}) {
         for (track of trackSelections) {
             for (filterObj of filters.filter((filter) => filter.isChecked)) {
                 let filter = filterObj.name;
-                console.log(filter, filterType, track[filterType])
                 if (track[filterType].includes(filter)) {
                     switch(filterMode) {
                         case "Select and Unselect": case "Select Only":
@@ -121,11 +120,9 @@ function FormScreen({navigation, route}) {
     };
 
     const handleTrackCheck = (track) => {
-        console.log(track);
         let newSelections = trackSelections.map((oldTrack) => 
             (oldTrack.name === track.name) && (oldTrack.cup === track.cup) ? {...oldTrack, checked: !track.checked} : oldTrack,
         )
-        console.log(newSelections);
         setTrackSelections(newSelections);
     };
 
