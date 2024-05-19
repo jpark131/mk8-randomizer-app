@@ -17,7 +17,7 @@ export class Track {
         let tokens = splitname.concat([this.origin])
         let lowered = [];
         for (let x of tokens) {
-            lowered.push(x.toLowerCase());
+            lowered.push(x.toLowerCase().replace('-','').replace('\'',''));
         }
         return lowered.join('_')
     }
