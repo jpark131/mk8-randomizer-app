@@ -7,15 +7,16 @@ import AppButton from '../components/AppButton';
 import OptionsBox from '../components/OptionsBox';
 import Card from '../components/Card';
 import TrackTable from '../components/TrackTable';
+import { arrayCopy } from '../helpers/arrayCopy';
 
 function FormScreen({navigation, route}) {
     //filter states
-    let cupFilterData = initFilterData(cups)
-    const [cupFilters, setCupFilters] = useState(cupFilterData)
-    let originFilterData = initFilterData(origins)
-    const [originFilters, setOriginFilters] = useState(originFilterData)
-    let typeFilterData = initFilterData(types)
-    const [typeFilters, setTypeFilters] = useState(typeFilterData)
+    let cupFilterData = initFilterData(cups);
+    const [cupFilters, setCupFilters] = useState(arrayCopy(cupFilterData));
+    let originFilterData = initFilterData(origins);
+    const [originFilters, setOriginFilters] = useState(arrayCopy(originFilterData));
+    let typeFilterData = initFilterData(types);
+    const [typeFilters, setTypeFilters] = useState(arrayCopy(typeFilterData));
 
     //mode states
     const [cupFilterMode, setCupFilterMode] = useState("Select and Unselect");
@@ -26,7 +27,7 @@ function FormScreen({navigation, route}) {
     const [numRaces, setNumRaces] = useState(4);
 
     //tracks states
-    const [trackSelections, setTrackSelections] = useState(JSON.parse(JSON.stringify(tracks)));
+    const [trackSelections, setTrackSelections] = useState(arrayCopy(tracks));
 
     const handleCupFilterChange = (checked, id) => {
         setCupFilters(
@@ -81,42 +82,52 @@ function FormScreen({navigation, route}) {
         }
     
         let tempTracks = [];
+        let cleanFilters = filters
+            .filter(
+                filter => filter.isChecked
+            ).map(
+                filter => filter.name
+            );
         for (track of trackSelections) {
-            for (filterObj of filters.filter((filter) => filter.isChecked)) {
-                let filter = filterObj.name;
-                if (track[filterType].includes(filter)) {
-                    switch(filterMode) {
-                        case "Select and Unselect": case "Select Only":
-                            track.hidden = false;
-                            track.checked = true;
-                            break;
-                        case "Unselect Only":
-                            track.checked = false;
-                            break;
-                        case "Hide":
-                            track.checked = false;
-                            track.hidden = true;
-                            break;
-                        case "Show":
-                            track.hidden = false;
-                            break;
-                    }
+            if (cleanFilters.includes(track[filterType])) {
+                switch(filterMode) {
+                    case "Select and Unselect": case "Select Only":
+                        track.hidden = false;
+                        track.checked = true;
+                        break;
+                    case "Unselect Only":
+                        track.checked = false;
+                        break;
+                    case "Hide":
+                        track.checked = false;
+                        track.hidden = true;
+                        break;
+                    case "Show":
+                        track.hidden = false;
+                        break;
                 }
-                else {
-                    switch(filterMode) {
-                        case "Select and Unselect":
-                            track.checked = false;
-                            break;
-                        case "Hide Others":
-                            track.checked = false;
-                            track.hidden = true;
-                            break;
-                    }   
-                }
+            }
+            else {
+                switch(filterMode) {
+                    case "Select and Unselect":
+                        track.checked = false;
+                        break;
+                    case "Hide Others":
+                        track.checked = false;
+                        track.hidden = true;
+                        break;
+                }   
             }
             tempTracks.push(track);
         }
         setTrackSelections(tempTracks);
+    };
+
+    const resetFilters = () => {
+        setTrackSelections(tracks);
+        setCupFilters(cupFilterData);
+        setOriginFilters(originFilterData);
+        setTypeFilters(typeFilterData);
     };
 
     const handleTrackCheck = (track) => {
@@ -167,7 +178,7 @@ function FormScreen({navigation, route}) {
                     />
                     <AppButton
                         title="Reset Filters"
-                        onPress={() => setTrackSelections(tracks)}
+                        onPress={resetFilters}
                     />
                 </Card>
                 <TrackTable tracks={trackSelections} onTrackCheck={handleTrackCheck}/>
