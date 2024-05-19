@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './Card';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
-import { Row, Table } from 'react-native-table-component';
+import { Row, Table } from 'react-native-reanimated-table';
 import { images } from '../data/images';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 
@@ -18,14 +18,12 @@ function TrackTable({tracks}) {
         </View>
     );
 
-    const trackImage = (image) => {
-        console.log(image)
-        return(
+    const trackImage = (image) => (
             <View style={{justifyContent: 'center', alignItems: 'center', padding: 5}}>
                 <Image source={images[image].uri} />
             </View>
-        )
-    };
+    );
+
     return (
         <Card title="Track Selections" contentStyle={{width: '100%'}}>
             <ScrollView horizontal>
@@ -33,7 +31,7 @@ function TrackTable({tracks}) {
                     <Table borderStyle={{ borderWidth: 0.5, borderColor: 'gray'}}>
                         <Row data={['','','Name', 'Cup', 'Origin', 'Track Type']} widthArr={[35, 227, 180, 120, 100, 275]} style={styles.head} textStyle={styles.headText}/>
                         {tracks.map(track => (
-                            <Row data={[trackCheck(track.checked), trackImage(track.image),track.name, track.cup, track.origin, track.typeString]} widthArr={[35, 227, 180, 120, 100, 275]} textStyle={styles.text}/>
+                            <Row key={track.name.concat(track.origin)} data={[trackCheck(track.checked), trackImage(track.image),track.name, track.cup, track.origin, track.typeString]} widthArr={[35, 227, 180, 120, 100, 275]} textStyle={styles.text}/>
                         ))}
                     </Table>
                 </View>

@@ -120,7 +120,6 @@ function FormScreen({navigation, route}) {
         setTrackSelections(tempTracks);
     };
     
-    console.log(trackSelections)
     return (
         <ScrollView>
             <View style={styles.container}>
