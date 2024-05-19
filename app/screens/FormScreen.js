@@ -26,7 +26,7 @@ function FormScreen({navigation, route}) {
     const [numRaces, setNumRaces] = useState(4);
 
     //tracks states
-    const [trackSelections, setTrackSelections] = useState(tracks);
+    const [trackSelections, setTrackSelections] = useState(JSON.parse(JSON.stringify(tracks)));
 
     const handleCupFilterChange = (checked, id) => {
         setCupFilters(
@@ -157,14 +157,18 @@ function FormScreen({navigation, route}) {
                     numRaces={numRaces}
                     onNumRacesChange={setNumRaces}
                     />
-                <Card title="Randomize!">
+                <Card title="Randomize!" contentStyle={{flexDirection: 'row'}}>
                     <AppButton 
                         title="Submit" 
                         onPress={() => navigation.navigate("Results", {
                             tracks: trackSelections.filter(track => track.checked),
                             numRaces: numRaces
                         })}
-                        />
+                    />
+                    <AppButton
+                        title="Reset Filters"
+                        onPress={() => setTrackSelections(tracks)}
+                    />
                 </Card>
                 <TrackTable tracks={trackSelections} onTrackCheck={handleTrackCheck}/>
             </View>
