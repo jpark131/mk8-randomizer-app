@@ -65,7 +65,7 @@ function ResultsScreen({navigation, route}) {
                     : <Text>No Tracks Remaining!</Text>
                 }
             </View>
-            <ScrollView>
+            <ScrollView style={{width: '100%'}}>
                 <View style={styles.cardContainer}>
                     {renderTrackCards()}
                 </View>
@@ -107,6 +107,11 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'space-evenly',
+
+        borderTopColor: 'lightgray',
+        borderTopWidth: 0.5,
+
+        padding: 10,
         marginBottom: 100
     },
     container: {
