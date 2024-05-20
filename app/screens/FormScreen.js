@@ -8,6 +8,7 @@ import OptionsBox from '../components/OptionsBox';
 import Card from '../components/Card';
 import TrackTable from '../components/TrackTable';
 import { arrayCopy } from '../helpers/arrayCopy';
+import QuickPresets from '../components/QuickPresets';
 
 function FormScreen({navigation, route}) {
     //filter states
@@ -22,7 +23,7 @@ function FormScreen({navigation, route}) {
     const [cupFilterMode, setCupFilterMode] = useState("Select and Unselect");
     const [originFilterMode, setOriginFilterMode] = useState("Select and Unselect");
     const [typeFilterMode, setTypeFilterMode] = useState("Select and Unselect");
-    
+
     //number of races states
     const [numRaces, setNumRaces] = useState(4);
 
@@ -136,7 +137,6 @@ function FormScreen({navigation, route}) {
         )
         setTrackSelections(newSelections);
     };
-
     return (
         <ScrollView>
             <View style={styles.container}>
@@ -164,6 +164,13 @@ function FormScreen({navigation, route}) {
                     onModeChange={handleTypeFilterModeChange}
                     onApplyFilter={() => applyFilters("typeString")}
                     />
+                <QuickPresets onApplyPreset={(presetTracks) => {
+                    setTrackSelections(presetTracks);
+                    navigation.navigate("Results", {
+                        tracks: presetTracks.filter(track => track.checked),
+                        numRaces: numRaces
+                    })
+                }}/>
                 <OptionsBox 
                     numRaces={numRaces}
                     onNumRacesChange={setNumRaces}

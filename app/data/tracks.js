@@ -157,3 +157,23 @@ export let types = [
     'Ruins',
     'Water',
 ]
+
+export let jakes_favorites = [
+    { name: 'Mount Wario', origin: 'MK8'},
+    { name: 'Cloudtop Cruise', origin: 'MK8'},
+    { name: 'Rainbow Road', origin: 'MK8'},
+    { name: 'Moo Moo Meadows', origin: 'Wii'},
+    { name: 'Rainbow Road', origin: 'N64'},
+    { name: 'Yoshi Circuit', origin: 'GCN'},
+    { name: 'Cheese Land', origin: 'GBA'},
+    { name: 'Coconut Mall', origin: 'Wii'},
+    { name: 'Kalimari Desert', origin: 'N64'},
+    { name: 'Maple Treeway', origin: 'Wii'},
+    { name: 'Peach Gardens', origin: 'DS'},
+    { name: 'Rainbow Road', origin: '3DS'},
+    { name: 'DK Summit', origin: 'Wii'},
+    { name: 'DK Mountain', origin: 'GCN'},
+    { name: 'Daisy Circuit', origin: 'Wii'},
+    { name: 'Rainbow Road', origin: 'Wii'},
+
+]

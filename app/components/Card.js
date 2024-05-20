@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: 'gray',
         borderRadius: 5,
+        zIndex: 1,
     },
     title: {
         fontSize: 20,
