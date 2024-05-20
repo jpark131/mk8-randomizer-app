@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-function CollapsibleCard({title, children}) {
+function CollapsibleCard({title, children, contentStyle}) {
     const [expanded, setExpanded] = useState(false);
     const [height, setHeight] = useState(0);
 
@@ -33,7 +33,7 @@ function CollapsibleCard({title, children}) {
                     <Text style={styles.title}>{title}</Text>
                 </View>
                 <Animated.View style={animatedStyle}>
-                    <View onLayout={onLayout} style={{position: "absolute"}}>
+                    <View onLayout={onLayout} style={[{padding: 10, position: "absolute"}, contentStyle]}>
                         {children}
                     </View>
                 </Animated.View>
