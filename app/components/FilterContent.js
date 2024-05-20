@@ -3,8 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import FilterCheckBox from './FilterCheckBox';
 import FilterModeGroup from './FilterModeGroup';
 import AppButton from './AppButton';
+import { useTheme } from '@react-navigation/native';
 
 function FilterContent({ title, filters, onFilterChange, onModeChange, onApplyFilter }) {
+    const { colors } = useTheme();
     const handleCheckboxPress = (checked, id) => {
         onFilterChange(checked, id);
     };
@@ -19,12 +21,12 @@ function FilterContent({ title, filters, onFilterChange, onModeChange, onApplyFi
     
     return (
         <View>
-            <Text style={styles.filterContentTitle}>Mode:</Text> 
+            <Text style={[styles.filterContentTitle, {color: colors.text}]}>Mode:</Text> 
             <FilterModeGroup 
                 modes={["Select and Unselect", "Select Only", "Unselect Only", "Hide", "Hide Others", "Show"]} 
                 onModeChange={handleModeChange}
             />
-            <Text style={styles.filterContentTitle}>{title}:</Text>  
+            <Text style={[styles.filterContentTitle, {color: colors.text}]}>{title}:</Text>  
             <View style={styles.filterContentSection}>
                 {filters.map(filter => (
                     <View key={filter.id}>
