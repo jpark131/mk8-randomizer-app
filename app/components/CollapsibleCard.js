@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTheme } from '@react-navigation/native';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 function CollapsibleCard({title, children, contentStyle}) {
+    const { colors } = useTheme();
     const [expanded, setExpanded] = useState(false);
     const [height, setHeight] = useState(0);
 
@@ -27,10 +29,10 @@ function CollapsibleCard({title, children, contentStyle}) {
     };
 
     return (
-        <Pressable onPress={onItemPress} style={styles.container}>
-            <View style={styles.container}>
-                <View style={styles.titleBackground}>
-                    <Text style={styles.title}>{title}</Text>
+        <Pressable onPress={onItemPress} style={[{borderColor: colors.border},styles.container]}>
+            <View style={[{borderColor: colors.border},styles.container]}>
+                <View style={[{backgroundColor: colors.card, borderColor: colors.border}, styles.titleBackground]}>
+                    <Text style={[{color: colors.text},styles.title]}>{title}</Text>
                 </View>
                 <Animated.View style={animatedStyle}>
                     <View onLayout={onLayout} style={[{padding: 10, position: "absolute"}, contentStyle]}>
@@ -48,7 +50,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         borderWidth: 0.5,
-        borderColor: 'gray',
         borderRadius: 5,
     },
     title: {
@@ -57,10 +58,8 @@ const styles = StyleSheet.create({
     },
     titleBackground: {
         width: '100%',
-        backgroundColor: 'lightgray',
         padding: 10,
         borderBottomWidth: 0.5,
-        borderBottomColor: 'gray'
     }
 });
 

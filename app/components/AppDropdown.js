@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import { Dropdown } from 'react-native-element-dropdown';
 
 function AppDropdown({value, dropdownOptions, onSetValue}) {
+    const { colors } = useTheme();
     const [isFocus, setIsFocus] = useState(false);
 
     return (
         <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: 'dodgerblue' }]}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
+            style={[styles.dropdown, isFocus && { borderColor: colors.primary }, { borderColor: colors.border}]}
+            containerStyle={{ backgroundColor: colors.background }}
+            selectedTextStyle={[styles.selectedTextStyle, {color: colors.text}]}
+            itemTextStyle={{color: colors.text}}
+            activeColor={colors.card}
             iconStyle={styles.iconStyle}
             data={dropdownOptions}
             labelField="label"
@@ -26,13 +30,8 @@ function AppDropdown({value, dropdownOptions, onSetValue}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      backgroundColor: 'white',
-      padding: 16,
-    },
     dropdown: {
       height: 50,
-      borderColor: 'gray',
       borderWidth: 0.5,
       borderRadius: 8,
       paddingHorizontal: 8,

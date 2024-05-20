@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTheme } from '@react-navigation/native';
 import { Image, Text, SafeAreaView, StyleSheet, View, ImageBackground } from 'react-native';
 
 import AppButton from '../components/AppButton';
 
 function WelcomeScreen({navigation, route}) {
+    const { colors } = useTheme();
     return (
         <SafeAreaView style={styles.container}>
             <Image source={require("../assets/logo-mk8.png")} style={{
@@ -12,7 +14,7 @@ function WelcomeScreen({navigation, route}) {
                 resizeMode: "contain",
                 marginBottom: -20,          
             }}/>
-            <Text>Welcome to the Mario Kart 8 Deluxe Randomizer!!</Text>
+            <Text style={{color: colors.text}}>Welcome to the Mario Kart 8 Deluxe Randomizer!!</Text>
             <AppButton 
                 title="Let's a Go!" 
                 onPress={() => navigation.replace("Mario Kart 8 Track Chooser")}

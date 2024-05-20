@@ -1,16 +1,18 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
-function AppButton({title, color="dodgerblue", style, textstyle, onPress}) {
+function AppButton({title, color, style, textstyle, onPress}) {
+    const { colors } = useTheme();
     return(
         <TouchableOpacity 
             style={[
                 style,
                 styles.button,
-                {backgroundColor: color},
+                {backgroundColor: !color && colors.primary},
             ]}
             onPress={onPress}>
-            <Text style={textstyle}>{title}</Text>
+            <Text style={[{color: colors.text}, styles.textStyle, textstyle]}>{title}</Text>
         </TouchableOpacity>
     );
 }
@@ -24,6 +26,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         margin: 5,
     },
+    textStyle: {
+    }
 })
 
 export default AppButton

@@ -1,16 +1,18 @@
 import React from 'react';
+import { useTheme } from '@react-navigation/native';
 import { View, StyleSheet, Text, Image } from 'react-native';
 
-import {images} from '../data/images'
 import AppButton from './AppButton';
+import { images } from '../data/images'
 
 function TrackCard({ track, onReshuffle, onRemove }) {
+    const { colors } = useTheme();
     return (
-        <View style={styles.card}>
+        <View style={[styles.card, {borderColor: colors.border, backgroundColor: colors.card}]}>
             <Image style={styles.image} source={images[track.image].uri} />
-            <Text style={styles.title}>{track.name}, {track.origin}</Text>
+            <Text style={[styles.title, {color: colors.text}]}>{track.name}, {track.origin}</Text>
             <Image style={styles.cupimage} source={images[track.cupimage].uri} />
-            <Text style={styles.cup}>{track.cup}</Text>
+            <Text style={[styles.cup, {color: colors.text}]}>{track.cup}</Text>
             <Text style={styles.type}>{track.typeString}</Text>
             <View style={styles.buttons}>
                 <AppButton title="Reshuffle" onPress={() => onReshuffle()}/>
@@ -27,8 +29,6 @@ const styles = StyleSheet.create({
     card: {
         borderRadius: 15,
         borderWidth: 3,
-        borderColor: "#000",
-        backgroundColor: "#fff",
         marginBottom: 20,
         overflow: "hidden",
         padding: 10,

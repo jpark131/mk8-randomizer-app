@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useTheme } from '@react-navigation/native';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+
 import TrackCard from '../components/TrackCard';
 import AppButton from '../components/AppButton';
 
 function ResultsScreen({navigation, route}) {
+    const { colors } = useTheme();
     const [trackList, setTrackList] = useState(randomize(route.params.tracks));
     const [numRaces, setNumRaces] = useState(route.params.numRaces);
 
@@ -54,15 +57,15 @@ function ResultsScreen({navigation, route}) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.buttonContainer}>
+            <View style={[styles.buttonContainer, {borderColor: colors.border, backgroundColor: colors.card}]}>
                 <AppButton title="Reshuffle All" onPress={() => handleReshuffle(-1)} />
                 {trackList.length - numRaces
                     ? <AppButton title="Next Set" onPress={handleNextSet} />
                     : null
                 }
                 {trackList.length - numRaces
-                    ? <Text>Tracks Remaining: {trackList.length - numRaces}</Text>
-                    : <Text>No Tracks Remaining!</Text>
+                    ? <Text style={{color: colors.text}}>Tracks Remaining: {trackList.length - numRaces}</Text>
+                    : <Text style={{color: colors.text}}>No Tracks Remaining!</Text>
                 }
             </View>
             <ScrollView style={{width: '100%'}}>
@@ -97,7 +100,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
 
-        backgroundColor: 'white',
+        borderWidth: 0.5,
+
         padding: 10,
     },
     cardContainer: {
@@ -107,9 +111,6 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-
-        borderTopColor: 'lightgray',
-        borderTopWidth: 0.5,
 
         padding: 10,
         marginBottom: 100

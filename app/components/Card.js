@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTheme } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
 
 function Card({ 
@@ -7,10 +8,11 @@ function Card({
         contentStyle,
         children
 }) {
+    const { colors } = useTheme();
     return (
-        <View style={styles.container}>
-            <View style={styles.titleBackground}>
-                <Text style={styles.title}>{title}</Text>
+        <View style={[{borderColor: colors.border},styles.container]}>
+            <View style={[{backgroundColor: colors.card, borderColor: colors.border}, styles.titleBackground]}>
+                <Text style={[{color: colors.text},styles.title]}>{title}</Text>
             </View>
             <View style={[{padding: 10}, contentStyle]}>
                 {children}
@@ -25,7 +27,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         borderWidth: 0.5,
-        borderColor: 'gray',
         borderRadius: 5,
         zIndex: 1,
     },
@@ -35,10 +36,8 @@ const styles = StyleSheet.create({
     },
     titleBackground: {
         width: '100%',
-        backgroundColor: 'lightgray',
         padding: 10,
         borderBottomWidth: 0.5,
-        borderBottomColor: 'gray'
     }
 });
 
