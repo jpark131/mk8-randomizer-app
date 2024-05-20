@@ -1,10 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text,  } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 import Card from './Card';
 import AppDropdown from './AppDropdown';
 
 function OptionsBox({ numRaces, onNumRacesChange }) {
+    const { colors } = useTheme();
+
     dropdownOptions = [
         {label: '4', value: 4},
         {label: '6', value: 6},
@@ -18,7 +21,7 @@ function OptionsBox({ numRaces, onNumRacesChange }) {
 
     return (
         <Card title="Options">
-            <Text style={styles.optionTitle}>Number of Races:</Text> 
+            <Text style={[styles.optionTitle, {color: colors.text}]}>Number of Races:</Text> 
             <AppDropdown value={numRaces} dropdownOptions={dropdownOptions} onSetValue={onNumRacesChange} />
         </Card>
     );

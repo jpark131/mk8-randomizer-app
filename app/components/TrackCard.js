@@ -13,7 +13,7 @@ function TrackCard({ track, onReshuffle, onRemove }) {
             <Text style={[styles.title, {color: colors.text}]}>{track.name}, {track.origin}</Text>
             <Image style={styles.cupimage} source={images[track.cupimage].uri} />
             <Text style={[styles.cup, {color: colors.text}]}>{track.cup}</Text>
-            <Text style={styles.type}>{track.typeString}</Text>
+            <Text style={[styles.type, {color: colors.secondaryText}]}>{track.typeString}</Text>
             <View style={styles.buttons}>
                 <AppButton title="Reshuffle" onPress={() => onReshuffle()}/>
                 <AppButton title="Remove" onPress={() => onRemove()}/>
