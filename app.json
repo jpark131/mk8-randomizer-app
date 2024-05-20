@@ -32,7 +32,13 @@
       }
     },
     "owner": "radeation",
-    "sdkVersion": "51.0.0"
+    "sdkVersion": "51.0.0",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/0599ec01-7b36-483f-ab30-7ab5d330979e"
+    }
   },
   "name": "mk8-randomizer"
 }
