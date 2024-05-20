@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import CollapsibleCard from './CollapsibleCard';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { StyleSheet, View } from 'react-native';
-import AppButton from './AppButton';
-import { Dropdown } from 'react-native-element-dropdown';
+import { View } from 'react-native';
+
 import Card from './Card';
+import AppButton from './AppButton';
 import AppDropdown from './AppDropdown';
-import { jakes_favorites, tracks } from '../data/tracks';
 import { arrayCopy } from '../helpers/arrayCopy';
+import { jakes_favorites, tracks } from '../data/tracks';
 
 function QuickPresets({onApplyPreset}) { 
     const [quickPreset, setQuickPreset] = useState("No Stupid City Maps");
@@ -17,7 +15,7 @@ function QuickPresets({onApplyPreset}) {
     ];
     return (
         <Card title="Quick Presets">
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
                 <AppDropdown
                     value={quickPreset}
                     dropdownOptions={dropdownOptions}
