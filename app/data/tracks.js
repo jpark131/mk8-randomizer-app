@@ -177,3 +177,23 @@ export let jakes_favorites = [
     { name: 'Rainbow Road', origin: 'Wii'},
 
 ]
+
+export let heathers_favorites = [
+    { name: 'DK Summit', origin: 'Wii'},
+    { name: 'Daisy Cruiser', origin: 'GCN'},
+    { name: 'Thwomp Ruins', origin: 'MK8'},
+    { name: 'Toad Harbor', origin: 'MK8'},
+    { name: 'Twisted Mansion', origin: 'MK8'},
+    { name: 'Sunshine Airport', origin: 'MK8'},
+    { name: 'Electrodome', origin: 'MK8'},
+    { name: 'Mount Wario', origin: 'MK8'},
+    { name: 'Excitebike Arena', origin: 'MK8'},
+    { name: 'Moo Moo Meadows', origin: 'Wii'},
+    { name: 'Wario Stadium', origin: 'DS'},
+    { name: 'Yoshi Valley', origin: 'N64'},
+    { name: 'Choco Mountain', origin: 'N64'},
+    { name: 'Coconut Mall', origin: 'Wii'},
+    { name: 'Maple Treeway', origin: 'Wii'},  
+    { name: 'Peach Gardens', origin: 'DS'},
+
+]
