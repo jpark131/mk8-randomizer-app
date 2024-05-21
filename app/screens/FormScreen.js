@@ -165,7 +165,6 @@ function FormScreen({navigation, route}) {
                     onApplyFilter={() => applyFilters("typeString")}
                     />
                 <QuickPresets onApplyPreset={(presetTracks) => {
-                    setTrackSelections(presetTracks);
                     navigation.navigate("Results", {
                         tracks: presetTracks.filter(track => track.checked),
                         numRaces: numRaces
