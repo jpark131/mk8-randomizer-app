@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "mk8-randomizer",
+    "name": "MK8 Randomizer",
     "slug": "mk8-randomizer",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "default",
     "icon": "./app/assets/icon.png",
     "userInterfaceStyle": "light",
