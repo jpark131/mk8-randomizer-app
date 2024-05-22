@@ -14,7 +14,7 @@ function WelcomeScreen({navigation, route}) {
                 resizeMode: "contain",
                 marginBottom: -20,          
             }}/>
-            <Text style={{color: colors.text}}>Welcome to the Mario Kart 8 Deluxe Randomizer!!</Text>
+            <Text style={{color: colors.text}}>Welcome to the Mario Kart 8 Deluxe Randomizer!!!</Text>
             <AppButton 
                 title="Let's a Go!" 
                 onPress={() => navigation.replace("Mario Kart 8 Track Chooser")}
