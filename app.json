@@ -2,7 +2,7 @@
   "expo": {
     "name": "MK8 Deluxe Track Chooser",
     "slug": "mk8d-trackchooser",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "orientation": "default",
     "icon": "./app/assets/icon.png",
     "userInterfaceStyle": "light",
@@ -28,7 +28,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "0599ec01-7b36-483f-ab30-7ab5d330979e"
+        "projectId": "ed53dfcc-fbdc-4dfd-bb11-088981ba387e"
       }
     },
     "owner": "radeation",
