@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "MK8 Randomizer",
-    "slug": "mk8-randomizer",
-    "version": "1.0.1",
+    "name": "MK8 Deluxe Track Chooser",
+    "slug": "mk8d-trackchooser",
+    "version": "1.0.0",
     "orientation": "default",
     "icon": "./app/assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,14 +13,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.radeation.mk8randomizer"
+      "bundleIdentifier": "com.radeation.mk8dtrackchooser"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.radeation.mk8randomizer"
+      "package": "com.radeation.mk8dtrackchooser"
     },
     "web": {
       "favicon": "./app/assets/favicon.png",
@@ -28,7 +28,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "0599ec01-7b36-483f-ab30-7ab5d330979e"
+        "projectId": "ed53dfcc-fbdc-4dfd-bb11-088981ba387e"
       }
     },
     "owner": "radeation",
@@ -37,8 +37,7 @@
       "policy": "sdkVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/0599ec01-7b36-483f-ab30-7ab5d330979e"
+      "url": "https://u.expo.dev/ed53dfcc-fbdc-4dfd-bb11-088981ba387e"
     }
-  },
-  "name": "mk8-randomizer"
+  }
 }

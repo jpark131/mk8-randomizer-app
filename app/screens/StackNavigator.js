@@ -16,7 +16,7 @@ function StackNavigator(props) {
                 component={WelcomeScreen}
             />
             <Stack.Screen
-                name="Mario Kart 8 Track Chooser"
+                name="MK8 Deluxe Track Chooser"
                 component={FormScreen}
             />
             <Stack.Screen

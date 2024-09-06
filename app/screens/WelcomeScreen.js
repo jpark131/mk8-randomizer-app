@@ -9,15 +9,14 @@ function WelcomeScreen({navigation, route}) {
     return (
         <SafeAreaView style={styles.container}>
             <Image source={require("../assets/logo-mk8.png")} style={{
-                width: '90%',
+                width: '80%',
                 maxWidth: 800,
-                resizeMode: "contain",
-                marginBottom: -20,          
+                maxHeight: 300,
+                resizeMode: "contain",         
             }}/>
-            <Text style={{color: colors.text}}>Welcome to the Mario Kart 8 Deluxe Randomizer!!!</Text>
             <AppButton 
                 title="Let's a Go!" 
-                onPress={() => navigation.replace("Mario Kart 8 Track Chooser")}
+                onPress={() => navigation.replace("MK8 Deluxe Track Chooser")}
             />
             <Image style={styles.background} source={require("../assets/characters.png")}/>
         </SafeAreaView>
