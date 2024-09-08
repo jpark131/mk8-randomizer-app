@@ -13,14 +13,16 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.radeation.mk8dtrackchooser"
+      "bundleIdentifier": "com.radeation.mk8dtrackchooser",
+      "buildNumber": "2"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.radeation.mk8dtrackchooser"
+      "package": "com.radeation.mk8dtrackchooser",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./app/assets/favicon.png",
