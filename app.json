@@ -2,6 +2,7 @@
   "expo": {
     "name": "MK8 Deluxe Track Chooser",
     "slug": "mk8d-trackchooser",
+    "version": "1.0.2",
     "orientation": "default",
     "icon": "./app/assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -12,13 +13,11 @@
     },
     "ios": {
       "supportsTablet": true,
-      "buildNumber": "1",
       "bundleIdentifier": "com.radeation.mk8dtrackchooser"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/icon.png",
-        "versionCode": "1",
         "backgroundColor": "#ffffff"
       },
       "package": "com.radeation.mk8dtrackchooser"
