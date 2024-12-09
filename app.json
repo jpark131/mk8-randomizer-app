@@ -34,7 +34,6 @@
       }
     },
     "owner": "radeation",
-    "sdkVersion": "51.0.0",
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
