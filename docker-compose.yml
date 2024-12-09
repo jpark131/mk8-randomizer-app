@@ -1,0 +1,8 @@
+services:
+  mk8-randomizer:
+    build: .
+    image: mk8-randomizer
+    container_name: mk8-randomizer
+    restart: unless-stopped
+    ports:
+     - "3000:3000"
