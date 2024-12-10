@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "MK8 Deluxe Track Chooser",
+    "name": "Track Chooser",
     "slug": "mk8d-trackchooser",
     "version": "1.0.2",
     "orientation": "default",
@@ -34,7 +34,6 @@
       }
     },
     "owner": "radeation",
-    "sdkVersion": "51.0.0",
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
