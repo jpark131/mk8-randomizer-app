@@ -2,7 +2,7 @@
   "expo": {
     "name": "Track Chooser",
     "slug": "mk8d-trackchooser",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "orientation": "default",
     "icon": "./app/assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -13,16 +13,14 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.radeation.mk8dtrackchooser",
-      "buildNumber": "2"
+      "bundleIdentifier": "com.radeation.mk8dtrackchooser"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.radeation.mk8dtrackchooser",
-      "versionCode": 2
+      "package": "com.radeation.mk8dtrackchooser"
     },
     "web": {
       "favicon": "./app/assets/favicon.png",
